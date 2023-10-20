@@ -32,13 +32,13 @@ void error_str(int code, ...)
 */
 void err1(int code, ...)
 {
-	 va_list agg;
-	 char *pp;
-	 int num;
+	va_list agg;
+	char *pp;
+	int num;
 
-	 va_start(agg, code);
-	 switch(code)
-	 {
+	va_start(agg, code);
+	switch (code)
+	{
 		case 1:
 			fprintf(stderr, "Usage: header file\n");
 			break;
@@ -58,13 +58,13 @@ void err1(int code, ...)
 			break;
 		default:
 			break;
-	 }
-	 n_free();
-	 exit(EXIT_FAILURE);
+	}
+	n_free();
+	exit(EXIT_FAILURE);
 }
 /**
  * err2 - handles error by printing appropriate messages
- * code: error code
+ * @code: error code to print the message
  * Return: void
 */
 void err2(int code, ...)
