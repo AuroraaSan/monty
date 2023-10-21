@@ -121,7 +121,7 @@ void f_call(op_func fun, char *op_c, char *val, int num, int fr)
 	{
 		if (val != NULL && val[0] == '-')
 		{
-			val += 1;
+			val = val + 1;
 			fg = -1;
 		}
 		if (val == NULL)
@@ -140,4 +140,3 @@ void f_call(op_func fun, char *op_c, char *val, int num, int fr)
 	else
 		fun(&head, num);
 }
-

@@ -61,7 +61,6 @@ void open_file(char *f_name);
 void f_read(FILE *);
 int line_p(char *buf, int num, int fr);
 void stack_add(stack_t **nd, __attribute__((unused))unsigned int num);
-void top_p(stack_t **stk, unsigned int num);
 void nd_plus(stack_t **stk, unsigned int num);
 void nothing(stack_t **stk, unsigned int num);
 void nd_swp(stack_t **stk, unsigned int num);

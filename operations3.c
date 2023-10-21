@@ -1,6 +1,18 @@
 #include "monty.h"
 
 /**
+ * nothing - function that does nothing
+ * @stk: stack
+ * @num: line number
+ * Return: void
+*/
+void nothing(stack_t **stk, unsigned int num)
+{
+	(void)stk;
+	(void)num;
+}
+
+/**
  * nd_swp - swap two nodes in the stack
  * @stk: stack
  * @num: line number for opcode
@@ -22,6 +34,25 @@ void nd_swp(stack_t **stk, unsigned int num)
 	*stk = temp;
 }
 
+
+/**
+ * nd_plus - add node to the top os stack
+ * @stk: stack
+ * @num: number line of opcode
+ * Return: void
+*/
+void nd_plus(stack_t **stk, unsigned int num)
+{
+	int s;
+
+	if (stk == NULL || *stk == NULL || (*stk)->next == NULL)
+		err2(8, num, "add");
+	(*stk) = (*stk)->next;
+	s = (*stk)->n + (*stk)->prev->n;
+	(*stk)->n = s;
+	free((*stk)->prev);
+	(*stk)->prev = NULL;
+}
 /**
  * nd_minus - subtracts 2 nodes from top os stack
  * @stk: stack
@@ -41,43 +72,26 @@ void nd_minus(stack_t **stk, unsigned int num)
 	(*stk)->prev = NULL;
 }
 
+
 /**
- * top_p - print the top node in the stack
+ * nd_by - divide the top nodes of stack
  * @stk: stack
- * @num: line number of opcode
+ * @num: line number of the opcode
  * Return: void
 */
-void top_p(stack_t **stk, unsigned int num)
+void nd_by(stack_t **stk, unsigned int num)
 {
-	stack_t *temp;
+	int div;
 
-	if (stk == NULL || *stk == NULL)
-		err2(7, num);
-	temp = *stk;
-	*stk = temp->next;
-	if (*stk != NULL)
-		(*stk)->prev = NULL;
-	free(temp);
+	if (stk == NULL || *stk == NULL || (*stk)->next == NULL)
+		err2(8, num, "div");
+	if ((*stk)->n == 0)
+		err2(9, num);
+	(*stk) = (*stk)->next;
+	div = (*stk)->n / (*stk)->prev->n;
+	(*stk)->n = div;
+	free((*stk)->prev);
+	(*stk)->prev = NULL;
 }
 
-/**
- * stk_print - print the stack nodes
- * @stk: pointer to the stack to be printed
- * @num: line number of operation code
- * Return: void
-*/
-void stk_print(stack_t **stk, unsigned int num)
-{
-	stack_t *temp;
-
-	(void) num;
-	if (stk == NULL)
-		exit(EXIT_FAILURE);
-	temp = *stk;
-	while (temp != NULL)
-	{
-		printf("%d\n", temp->n);
-		temp = temp->next;
-	}
-}
 
