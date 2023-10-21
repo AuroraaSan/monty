@@ -7,7 +7,7 @@ of stack and vise versa */
  * @stk: stack
  * @len: number of lines in the stack
 */
-void rotate_l(stack_t **stack, __attribute__((unused))unsigned int len)
+void rotate_l(stack_t **stk, __attribute__((unused))unsigned int len)
 {
 	stack_t *temp;
 
@@ -35,9 +35,9 @@ void rotate_l(stack_t **stack, __attribute__((unused))unsigned int len)
  * @len: number of lines
  * Return: void
 */
-void rotate_r(stack_t **stack, __attribute__((unused))unsigned int len)
+void rotate_r(stack_t **stk, __attribute__((unused))unsigned int len)
 {
-	stack_t = temp;
+	stack_t *temp;
 
 	/* check if empty or contains only one value */
 	if (stk == NULL || *stk == NULL || (*stk)->next == NULL)

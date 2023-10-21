@@ -15,7 +15,7 @@ void string_print(stack_t **stk, __attribute__((unused))unsigned int len)
 	stack_t *temp;
 	
 	/* check if stack empty */
-	if (stk == null || *stk == NULL)
+	if (stk == NULL || *stk == NULL)
 	{
 		/* display empty line */
 		printf("\n");
