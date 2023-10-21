@@ -1,6 +1,5 @@
 #include "monty.h"
 
-
 /**
  * err1 - print error message according to each case
  * @code: error code

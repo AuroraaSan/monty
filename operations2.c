@@ -70,30 +70,7 @@ void pop_p(stack_t **stk, unsigned int num)
 */
 void top_p(stack_t **stk, unsigned int num)
 {
-	stack_t *temp;
-
-	if (stk == NULL || *stk == NULL)
-		err2(7, num);
-	temp = *stk;
-	*stk = temp->next;
-	if (*stk != NULL)
-		(*stk)->prev = NULL;
-	free(temp);
-}
-
-
-/**
- * print_tp - print the top node of the stack
- * @stk: ptr to the top of the stack
- * @num: line number
- * Return: void
-*/
-void print_tp(stack_t **stk, unsigned int num)
-{
 	if (stk == NULL || *stk == NULL)
 		err2(6, num);
 	printf("%d\n", (*stk)->n);
 }
-
-
-
