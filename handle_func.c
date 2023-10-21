@@ -85,5 +85,5 @@ void f_call(op_func fun, char *op_c, char *val, int num, int fr)
             q_add(&nd, num);
     }
     else
-        func(&head, num);
+        fun(&head, num);
 }

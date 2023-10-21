@@ -1,6 +1,6 @@
 #ifndef HEADER_H
 #define HEADER_H
-
+#define _GNU_SOURCE
 /* important headers */
 #include <stdio.h>
 #include <stdlib.h>
@@ -70,6 +70,9 @@ void top_p(stack_t **stk, unsigned int num);
 void stk_print(stack_t **stk, unsigned int num);
 void nd_by(stack_t **stk, unsigned int num);
 void pop_p(stack_t **stk, unsigned int num);
+void q_add(stack_t **nd_new, __attribute__((unused))unsigned int len);
+stack_t *nd_new(int num);
+void n_free(void);
 
 
 

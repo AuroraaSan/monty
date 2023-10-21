@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
     if (argc != 2)
     {
         fprintf(stderr, "Usage: header file\n");
-        exi(EXIT_FAILURE);
+        exit(EXIT_FAILURE);
     }
     f_open(argv[1]);
     n_free();
@@ -65,7 +65,7 @@ void q_add(stack_t **nd_new, __attribute__((unused))unsigned int len)
 {
     stack_t *temp;
 
-    if (nd_new = NULL || *nd_new == NULL)
+    if (nd_new == NULL || *nd_new == NULL)
         exit(EXIT_FAILURE);
     if (head == NULL)
     {

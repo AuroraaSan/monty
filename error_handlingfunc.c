@@ -10,7 +10,7 @@ void error_str(int code, ...)
 	va_list argg;
 	int num;
 
-	start_v(argg, code);
+	va_start(argg, code);
 	num = va_arg(argg, int);
 	switch (code)
 	{
@@ -76,22 +76,22 @@ void err2(int code, ...)
 	va_start(agg, code);
 	switch (code)
 	{
-	case 6:
-		fprintf(stderr, "L%d: stack empty can't pint\n", va_arg(agg, int));
-		break;
-	case 7:
-		fprintf(stderr, "L%d: empty stack can't pop", num, pp);
-		break;
-	case 8:
-		num = va_arg(agg, unsigned int);
-		pp = va_arg(agg, char *);
-		fprintf(stderr, "L%d: stack too short, can't %s\n", num, pp);
-		break;
-	case 9:
-		fprintf(stderr, "L%d: error divided by zero", va_arg(agg, unsigned int));
-		break;
-	default:
-		break;
+		case 6:
+			fprintf(stderr, "L%d: stack empty can't pint\n", va_arg(agg, int));
+			break;
+		case 7:
+			fprintf(stderr, "L%d: empty stack can't pop", va_arg(agg, int));
+			break;
+		case 8:
+			num = va_arg(agg, unsigned int);
+			pp = va_arg(agg, char *);
+			fprintf(stderr, "L%d: stack too short, can't %s\n", num, pp);
+			break;
+		case 9:
+			fprintf(stderr, "L%d: error divided by zero", va_arg(agg, unsigned int));
+			break;
+		default:
+			break;
 	}
 	n_free();
 	exit(EXIT_FAILURE);
