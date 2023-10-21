@@ -23,25 +23,7 @@ void stack_add(stack_t **nd, __attribute__((unused))unsigned int num)
     temp->prev = head;
 }
 
-/**
- * top_p - function to print the node at top
- * @stk: stack
- * @num: line number
- * Return: void
-*/
-void top_p(stack_t **stk, unsigned int num)
-{
-    stack_t *temp;
 
-    if(stk == NULL || *stk == NULL)
-        err2(7, num);
-    
-    temp = *stk;
-    *stk = temp->next;
-    if(*stk != NULL)
-        (*stk)->prev = NULL;
-    free(temp);
-}
 /**
  * nothing - function that does nothing
  * @stk: stack
