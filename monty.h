@@ -1,5 +1,5 @@
-#ifndef HEADER_H
-#define HEADER_H
+#ifndef MONTY_H
+#define MONTY_H
 #define _GNU_SOURCE
 /* important headers */
 #include <stdio.h>
