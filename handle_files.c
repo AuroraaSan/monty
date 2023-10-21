@@ -1,11 +1,11 @@
 #include "monty.h"
 
 /**
- * f_open - open file
+ * open_file - open file
  * @f_name: name of the file
  * Return: void
 */
-void f_open(char *f_name)
+void open_file(char *f_name)
 {
     FILE *fd = fopen(f_name, "r");
 

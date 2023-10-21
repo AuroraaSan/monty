@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
         fprintf(stderr, "Usage: header file\n");
         exit(EXIT_FAILURE);
     }
-    f_open(argv[1]);
+    open_file(argv[1]);
     n_free();
     return (0);
 }
