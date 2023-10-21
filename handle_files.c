@@ -1,10 +1,9 @@
 #include "monty.h"
 
 /**
- * open_file - open file
- * @f_name: name of the file
- * Return: void
-*/
+ * open_file - Open a file for reading
+ * @f_name: Name of the file to open
+ */
 void open_file(char *f_name)
 {
 	FILE *fd = fopen(f_name, "r");
@@ -16,10 +15,9 @@ void open_file(char *f_name)
 }
 
 /**
- * f_read - read file
- * @fd: file desc pointer
- * Return: void
-*/
+ * f_read - Read from the file
+ * @fd: File descriptor
+ */
 void f_read(FILE *fd)
 {
 	int num, fr = 0;
@@ -30,13 +28,14 @@ void f_read(FILE *fd)
 		fr = line_p(buf, num, fr);
 	free(buf);
 }
+
 /**
- * line_p - separate lines
- * @buf: buffer
- * @num: number of lines
- * @fr: format for storage
+ * line_p - Parse lines from the file
+ * @buf: Buffer containing the line
+ * @num: Line number
+ * @fr: Format for storage (0 for stack, 1 for queue)
  * Return: 0 if stack and 1 if queue
-*/
+ */
 int line_p(char *buf, int num, int fr)
 {
 	char *operation_c, *val;
@@ -57,18 +56,14 @@ int line_p(char *buf, int num, int fr)
 }
 
 /**
- * f_function - gets the function needed for the operation
- * @operation_c: opcode
- * @val: arg value
- * @fr: format for storage
- * @num:number line
- * Return: void
-*/
+ * f_function - Find and call the appropriate function for the operation
+ * @operation_c: Opcode
+ * @val: Argument value
+ * @num: Line number
+ * @fr: Format for storage
+ */
 void f_function(char *operation_c, char *val, int num, int fr)
 {
-	int x;
-	int fg;
-
 	instruction_t list_f[] = {
 		{"push", stack_add},
 		{"pint", top_p},
@@ -87,29 +82,29 @@ void f_function(char *operation_c, char *val, int num, int fr)
 		{"mod", nd_mod},
 		{NULL, NULL}
 	};
+	int x;
+
 	if (operation_c[0] == '#')
 		return;
-	for (fg = 1, x = 0; list_f[x].operation_c != NULL; x++)
+	for (x = 0; list_f[x].operation_c != NULL; x++)
 	{
 		if (strcmp(operation_c, list_f[x].operation_c) == 0)
 		{
 			f_call(list_f[x].f, operation_c, val, num, fr);
-			fg = 0;
+			return;
 		}
 	}
-	if (fg == 1)
-		err1(3, num, operation_c);
+	err1(3, num, operation_c);
 }
-/**
- * f_call - call the function to be operated
- * @fun: a ptr to the function
- * @op_c: operation code
- * @val: value in str
- * @num: number line
- * @fr: format for storage
- * Return: void
-*/
 
+/**
+ * f_call - Call the appropriate function for the operation
+ * @fun: A pointer to the function
+ * @op_c: Operation code
+ * @val: Value in string
+ * @num: Line number
+ * @fr: Format for storage
+ */
 void f_call(op_func fun, char *op_c, char *val, int num, int fr)
 {
 	stack_t *nd;
@@ -128,7 +123,7 @@ void f_call(op_func fun, char *op_c, char *val, int num, int fr)
 			err1(5, num);
 		for (x = 0; val[x] != '\0'; x++)
 		{
-			if (isdigit(val[x]) == 0)
+			if (!isdigit(val[x]))
 				err1(5, num);
 		}
 		nd = nd_new(atoi(val) * fg);
@@ -140,4 +135,3 @@ void f_call(op_func fun, char *op_c, char *val, int num, int fr)
 	else
 		fun(&head, num);
 }
-

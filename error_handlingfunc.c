@@ -1,6 +1,4 @@
 #include "monty.h"
-
-
 /**
  * err1 - print error message according to each case
  * @code: error code
@@ -39,6 +37,7 @@ void err1(int code, ...)
 		default:
 			break;
 	}
+	va_end(agg);
 	n_free();
 	exit(EXIT_FAILURE);
 }
@@ -53,30 +52,28 @@ void err1(int code, ...)
 */
 void err2(int code, ...)
 {
-	va_list agg;
-	char *pp;
-	int num;
+	va_list g;
 
-	va_start(agg, code);
+	va_start(g, code);
 	switch (code)
 	{
 		case 6:
-			fprintf(stderr, "L%d: can't pint, stack empty\n", va_arg(agg, int));
+			fprintf(stderr, "L%d: can't pint, stack empty\n", va_arg(g, int));
 			break;
 		case 7:
-			fprintf(stderr, "L%d: can't pop an empty stack\n", va_arg(agg, int));
+			fprintf(stderr, "L%d: can't pop an empty stack\n", va_arg(g, int));
 			break;
 		case 8:
-			num = va_arg(agg, unsigned int);
-			pp = va_arg(agg, char *);
-			fprintf(stderr, "L%d: can't %s, stack too short\n", num, pp);
+			fprintf(stderr, "L%d: can't %s, stack too short\n", va_arg(g, unsigned int),
+			va_arg(g, char *));
 			break;
 		case 9:
-			fprintf(stderr, "L%d: division by zero\n", va_arg(agg, unsigned int));
+			fprintf(stderr, "L%d: division by zero\n", va_arg(g, unsigned int));
 			break;
 		default:
 			break;
 	}
+	va_end(g);
 	n_free();
 	exit(EXIT_FAILURE);
 }
@@ -103,6 +100,7 @@ void error_str(int code, ...)
 		default:
 			break;
 	}
+	va_end(argg);
 	n_free();
 	exit(EXIT_FAILURE);
 }

@@ -4,24 +4,24 @@ stack_t *head = NULL;
 
 /**
  * main - main function of the program
- * @argc: argumenct counter
+ * @argc: argument counter
  * @argv: array of program arguments
  * Return: 0
-*/
+ */
 int main(int argc, char *argv[])
 {
 	if (argc != 2)
 	{
-		fprintf(stderr, "Usage: header file\n");
+		fprintf(stderr, "Usage: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 	open_file(argv[1]);
 	n_free();
 	return (0);
 }
- /**
-  * n_free - free nodes in stack
-  * Return: void
+
+/**
+ * n_free - free nodes in the stack
  */
 void n_free(void)
 {
@@ -40,8 +40,8 @@ void n_free(void)
 /**
  * nd_new - create a node
  * @num: node int
- * Return: ptr to the node is added or null if not
-*/
+ * Return: ptr to the node if added or null if not
+ */
 stack_t *nd_new(int num)
 {
 	stack_t *nd;
@@ -58,10 +58,9 @@ stack_t *nd_new(int num)
 /**
  * q_add - function to add a node to a queue
  * @nd_new: the new node to be added
- * @len: line number to be added
- * Return: void
-*/
-void q_add(stack_t **nd_new, __attribute__((unused))unsigned int len)
+ * @len: line number (unused)
+ */
+void q_add(stack_t **nd_new, __attribute__((unused)) unsigned int len)
 {
 	stack_t *temp;
 
@@ -78,4 +77,3 @@ void q_add(stack_t **nd_new, __attribute__((unused))unsigned int len)
 	temp->next = *nd_new;
 	(*nd_new)->prev = temp;
 }
-
