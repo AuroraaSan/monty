@@ -1,4 +1,4 @@
-#include "header.h"
+#include "monty.h"
 
 /**
  * nd_mul - multiply the top nodes in the stack
