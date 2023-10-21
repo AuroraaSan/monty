@@ -40,7 +40,7 @@ void err1(int code, ...)
 	switch (code)
 	{
 		case 1:
-			fprintf(stderr, "Usage: header file\n");
+			fprintf(stderr, "USAGE: header file\n");
 			break;
 		case 2:
 			fprintf(stderr, "Error, can't open file %s\n", va_arg(agg, char *));
@@ -48,10 +48,10 @@ void err1(int code, ...)
 		case 3:
 			num = va_arg(agg, int);
 			pp = va_arg(agg, char *);
-			fprintf(stderr, "L%d: instruction is unkown %s\n", num, pp);
+			fprintf(stderr, "L%d: unkown instruction %s\n", num, pp);
 			break;
 		case 4:
-			fprintf(stderr, "malloc failed error\n");
+			fprintf(stderr, "Error: malloc failed\n");
 			break;
 		case 5:
 			fprintf(stderr, "L%d: usage: push int\n", va_arg(agg, int));
