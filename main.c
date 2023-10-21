@@ -1,4 +1,5 @@
 #include "monty.h"
+
 stack_t *head = NULL;
 
 /**
@@ -18,6 +19,26 @@ int main(int argc, char *argv[])
 	n_free();
 	return (0);
 }
+/**
+ * n_free - Frees the memory associated with the linked list.
+ *
+ * This function iterates through the linked list and frees the memory
+ * associated with each node. It ensures that the memory is properly
+ * deallocated to prevent memory leaks.
+ */
+void n_free(void)
+{
+	stack_t *temp;
+
+	if (head == NULL)
+		return;
+	while (head != NULL)
+	{
+		temp = head;
+		head = head->next;
+		free(temp);
+	}
+}
 
 /**
  * nd_new - create a node
@@ -36,26 +57,6 @@ stack_t *nd_new(int num)
 	nd->n = num;
 	return (nd);
 }
-
-
- /**
-  * n_free - free nodes in stack
-  * Return: void
- */
-void n_free(void)
-{
-	stack_t *temp;
-
-	if (head == NULL)
-		return;
-	while (head != NULL)
-	{
-		temp = head;
-		head = head->next;
-		free(temp);
-	}
-}
-
 
 /**
  * q_add - function to add a node to a queue
