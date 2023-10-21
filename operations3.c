@@ -8,18 +8,18 @@
 */
 void nd_swp(stack_t **stk, unsigned int num)
 {
-    stack_t *temp;
+	stack_t *temp;
 
-    if (stk == NULL || *stk == NULL || (*stk)->next == NULL)
-        err2(8, num, "swap");
-    temp = (*stk)->next;
-    (*stk)->next = temp->next;
-    if(temp->next != NULL)
-        temp->next->prev = *stk;
-    temp->next = *stk;
-    (*stk)->prev = temp;
-    temp->prev = NULL;
-    *stk = temp;
+	if (stk == NULL || *stk == NULL || (*stk)->next == NULL)
+		err2(8, num, "swap");
+	temp = (*stk)->next;
+	(*stk)->next = temp->next;
+	if (temp->next != NULL)
+		temp->next->prev = *stk;
+	temp->next = *stk;
+	(*stk)->prev = temp;
+	temp->prev = NULL;
+	*stk = temp;
 }
 
 /**
@@ -30,16 +30,15 @@ void nd_swp(stack_t **stk, unsigned int num)
 */
 void nd_minus(stack_t **stk, unsigned int num)
 {
-    int sub;
+	int sub;
 
-    if (stk == NULL || *stk == NULL || (*stk)->next == NULL)
-        err2(8, num, "sub");
-    
-    (*stk) = (*stk)->next;
-    sub = (*stk)->n - (*stk)->prev->n;
-    (*stk)->n = sub;
-    free((*stk)->prev);
-    (*stk)->prev = NULL;
+	if (stk == NULL || *stk == NULL || (*stk)->next == NULL)
+		err2(8, num, "sub");
+	(*stk) = (*stk)->next;
+	sub = (*stk)->n - (*stk)->prev->n;
+	(*stk)->n = sub;
+	free((*stk)->prev);
+	(*stk)->prev = NULL;
 }
 
 /**
@@ -50,15 +49,15 @@ void nd_minus(stack_t **stk, unsigned int num)
 */
 void top_p(stack_t **stk, unsigned int num)
 {
-    stack_t *temp;
+	stack_t *temp;
 
-    if(stk == NULL || *stk == NULL)
-        err2(7, num);
-    temp = *stk;
-    *stk = temp->next;
-    if (*stk != NULL)
-        (*stk)->prev = NULL;
-    free(temp);
+	if (stk == NULL || *stk == NULL)
+		err2(7, num);
+	temp = *stk;
+	*stk = temp->next;
+	if (*stk != NULL)
+		(*stk)->prev = NULL;
+	free(temp);
 }
 
 /**
@@ -69,15 +68,16 @@ void top_p(stack_t **stk, unsigned int num)
 */
 void stk_print(stack_t **stk, unsigned int num)
 {
-    stack_t *temp;
+	stack_t *temp;
 
-    (void) num;
-    if (stk == NULL)
-        exit(EXIT_FAILURE);
-    temp = *stk;
-    while (temp != NULL)
-    {
-        printf("%d\n", temp->n);
-        temp = temp->next;
-    }
+	(void) num;
+	if (stk == NULL)
+		exit(EXIT_FAILURE);
+	temp = *stk;
+	while (temp != NULL)
+	{
+		printf("%d\n", temp->n);
+		temp = temp->next;
+	}
 }
+

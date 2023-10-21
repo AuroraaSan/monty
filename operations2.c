@@ -8,19 +8,19 @@
 */
 void stack_add(stack_t **nd, __attribute__((unused))unsigned int num)
 {
-    stack_t *temp;
+	stack_t *temp;
 
-    if (nd == NULL || *nd == NULL)
-        exit(EXIT_FAILURE);
-    if (head == NULL)
-    {
-        head = *nd;
-        return;
-    }
-    temp = head;
-    head = *nd;
-    head->next = temp;
-    temp->prev = head;
+	if (nd == NULL || *nd == NULL)
+		exit(EXIT_FAILURE);
+	if (head == NULL)
+	{
+		head = *nd;
+		return;
+	}
+	temp = head;
+	head = *nd;
+	head->next = temp;
+	temp->prev = head;
 }
 
 
@@ -32,8 +32,8 @@ void stack_add(stack_t **nd, __attribute__((unused))unsigned int num)
 */
 void nothing(stack_t **stk, unsigned int num)
 {
-    (void)stk;
-    (void)num;
+	(void)stk;
+	(void)num;
 }
 /**
  * nd_plus - add node to the top os stack
@@ -43,13 +43,14 @@ void nothing(stack_t **stk, unsigned int num)
 */
 void nd_plus(stack_t **stk, unsigned int num)
 {
-    int s;
+	int s;
 
-    if (stk == NULL || *stk == NULL || (*stk)->next == NULL)
-        err2(8, num, "add");
-    (*stk) = (*stk)->next;
-    s = (*stk)->n + (*stk)->prev->n;
-    (*stk)->n = s;
-    free((*stk)->prev);
-    (*stk)->prev = NULL;
+	if (stk == NULL || *stk == NULL || (*stk)->next == NULL)
+		err2(8, num, "add");
+	(*stk) = (*stk)->next;
+	s = (*stk)->n + (*stk)->prev->n;
+	(*stk)->n = s;
+	free((*stk)->prev);
+	(*stk)->prev = NULL;
 }
+

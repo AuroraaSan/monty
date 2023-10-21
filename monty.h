@@ -29,10 +29,10 @@ typedef struct stack_s
 
 /**
  * struct instruction_s - opcode and its function
- * @opcode: the opcode
+ * @operation_c: the opcode
  * @f: function to handle the opcode
  *
- * Description: opcode and its function
+ * Description: operation_c and its function
  * for stack, queues, LIFO, FIFO
  */
 typedef struct instruction_s
@@ -75,5 +75,5 @@ void q_add(stack_t **nd_new, __attribute__((unused))unsigned int len);
 stack_t *nd_new(int num);
 void n_free(void);
 
-
 #endif
+

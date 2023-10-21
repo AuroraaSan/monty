@@ -13,7 +13,6 @@ void string_print(stack_t **stk, __attribute__((unused))unsigned int len)
 	int asc;
 	/* temporary stack */
 	stack_t *temp;
-	
 	/* check if stack empty */
 	if (stk == NULL || *stk == NULL)
 	{
@@ -43,7 +42,7 @@ void string_print(stack_t **stk, __attribute__((unused))unsigned int len)
 
 
 /**
- * charcter_print - print the char of the provided ascii value
+ * character_print - print the char of the provided ascii value
  * @stk: ptr to the node at the top of stack
  * @num_line: number of lines
  * Return: void
