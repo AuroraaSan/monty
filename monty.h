@@ -76,6 +76,4 @@ stack_t *nd_new(int num);
 void n_free(void);
 
 
-
-
 #endif
