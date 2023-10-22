@@ -71,20 +71,20 @@ void f_function(char *operation_c, char *val, int num, int fr)
 
 	instruction_t list_f[] = {
 		{"push", stack_add},
-		{"pint", top_p},
 		{"pall", stk_print},
+		{"pint", top_p},
 		{"pop", pop_p},
-		{"add", nd_plus},
 		{"nop", nothing},
 		{"swap", nd_swp},
+		{"add", nd_plus},
 		{"sub", nd_minus},
+		{"div", nd_by},
 		{"mul", nd_mul},
+		{"mod", nd_mod},
 		{"pchar", character_print},
-		{"rotr", rotate_r},
 		{"pstr", string_print},
 		{"rotl", rotate_l},
-		{"div", nd_by},
-		{"mod", nd_mod},
+		{"rotr", rotate_r},
 		{NULL, NULL}
 	};
 	if (operation_c[0] == '#')
