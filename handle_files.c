@@ -89,9 +89,9 @@ void f_function(char *operation_c, char *val, int num, int fr)
 	};
 	if (operation_c[0] == '#')
 		return;
-	for (fg = 1, x = 0; list_f[x].operation_c != NULL; x++)
+	for (fg = 1, x = 0; list_f[x].opcode != NULL; x++)
 	{
-		if (strcmp(operation_c, list_f[x].operation_c) == 0)
+		if (strcmp(operation_c, list_f[x].opcode) == 0)
 		{
 			f_call(list_f[x].f, operation_c, val, num, fr);
 			fg = 0;

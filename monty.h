@@ -38,7 +38,7 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-	char *operation_c;
+	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
@@ -52,32 +52,31 @@ void error_string(int code, ...);
 void err1(int code, ...);
 void err2(int code, ...);
 /* handle strings */
-void character_print(stack_t **stk, unsigned int num_line);
-void string_print(stack_t **stk, __attribute__((unused))unsigned int len);
-void rotate_l(stack_t **stk, __attribute__((unused))unsigned int len);
-void rotate_r(stack_t **stk, __attribute__((unused))unsigned int len);
+void character_print(stack_t **, unsigned int);
+void string_print(stack_t **, unsigned int);
+void rotate_l(stack_t **, unsigned int);
+void rotate_r(stack_t **, unsigned int);
 /* operations */
-void nd_mod(stack_t **stk, unsigned int num);
-void nd_mul(stack_t **stk, unsigned int num);
+void nd_mod(stack_t **, unsigned int );
+void nd_mul(stack_t **, unsigned int );
 /* handle files */
-void f_call(op_func fun, char *op_c, char *val, int num, int fr);
-void f_function(char *operation_c, char *val, int num, int fr);
+void f_call(op_func , char *, char *, int , int );
+void f_function(char *, char *, int , int );
 void open_file(char *f_name);
 void f_read(FILE *);
 int line_p(char *buf, int num, int fr);
 /* operations */
-void stack_add(stack_t **nd, __attribute__((unused))unsigned int num);
-void top_p(stack_t **stk, unsigned int num);
-void nd_plus(stack_t **stk, unsigned int num);
-void nothing(stack_t **stk, unsigned int num);
-void nd_swp(stack_t **stk, unsigned int num);
-void nd_minus(stack_t **stk, unsigned int num);
+void stack_add(stack_t **, unsigned int);
+void top_p(stack_t **, unsigned int);
+void nd_plus(stack_t **, unsigned int);
+void nothing(stack_t **, unsigned int);
+void nd_swp(stack_t **, unsigned int);
+void nd_minus(stack_t **, unsigned int);
 int len_chars(FILE *);
-void top_p(stack_t **stk, unsigned int num);
-void stk_print(stack_t **stk, unsigned int num);
-void nd_by(stack_t **stk, unsigned int num);
-void pop_p(stack_t **stk, unsigned int num);
-void q_add(stack_t **nd_new, __attribute__((unused))unsigned int len);
+void stk_print(stack_t **, unsigned int);
+void nd_by(stack_t **, unsigned int);
+void pop_p(stack_t **, unsigned int);
+void q_add(stack_t **, unsigned int);
 stack_t *nd_new(int num);
 void free_nd(void);
 

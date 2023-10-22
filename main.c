@@ -1,51 +1,31 @@
 #include "monty.h"
-
 stack_t *head = NULL;
 
 /**
- * main - main function of the program
- * @argc: argumenct counter
- * @argv: array of program arguments
- * Return: 0
-*/
+ * main - entry point
+ * @argc: arguments count
+ * @argv: list of arguments
+ * Return: always 0
+ */
+
 int main(int argc, char *argv[])
 {
 	if (argc != 2)
 	{
-		fprintf(stderr, "Usage: header file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 	open_file(argv[1]);
 	free_nd();
 	return (0);
 }
+
 /**
- * free_nd - Frees the memory associated with the linked list.
- * 
- * This function iterates through the linked list and frees the memory
- * associated with each node. It ensures that the memory is properly
- * deallocated to prevent memory leaks.
+ * nd_new - Creates a node.
+ * @nx: Number to go inside the node.
+ * Return: Upon sucess a pointer to the node. Otherwise NULL.
  */
-void free_nd(void)
-{
-	stack_t *temp;
-
-	if (head == NULL)
-		return;
-	while (head != NULL)
-	{
-		temp = head;
-		head = head->next;
-		free(temp);
-	}
-}
-
-/**
- * nd_new - create a node
- * @num: node int
- * Return: ptr to the node is added or null if not
-*/
-stack_t *nd_new(int num)
+stack_t *nd_new(int nx)
 {
 	stack_t *nd;
 
@@ -54,31 +34,50 @@ stack_t *nd_new(int num)
 		err1(4);
 	nd->next = NULL;
 	nd->prev = NULL;
-	nd->n = num;
+	nd->n = nx;
 	return (nd);
 }
 
 /**
- * q_add - function to add a node to a queue
- * @nd_new: the new node to be added
- * @len: line number to be added
- * Return: void
-*/
-void q_add(stack_t **nd_new, __attribute__((unused))unsigned int len)
+ * free_nd- Frees nodes in the stack.
+ */
+void free_nd(void)
 {
 	stack_t *temp;
 
-	if (nd_new == NULL || *nd_new == NULL)
+	if (head == NULL)
+		return;
+
+	while (head != NULL)
+	{
+		temp = head;
+		head = head->next;
+		free(temp);
+	}
+}
+
+
+/**
+ * q_add - Adds a node to the queue.
+ * @nw_nod: Pointer to the new node.
+ * @len: line number of the opcode.
+ */
+void q_add(stack_t **nw_nod, __attribute__((unused))unsigned int len)
+{
+	stack_t *temp;
+
+	if (nw_nod == NULL || *nw_nod == NULL)
 		exit(EXIT_FAILURE);
 	if (head == NULL)
 	{
-		head = *nd_new;
+		head = *nw_nod;
 		return;
 	}
 	temp = head;
 	while (temp->next != NULL)
 		temp = temp->next;
-	temp->next = *nd_new;
-	(*nd_new)->prev = temp;
-}
 
+	temp->next = *nw_nod;
+	(*nw_nod)->prev = temp;
+
+}
