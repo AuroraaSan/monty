@@ -16,17 +16,17 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	open_file(argv[1]);
-	n_free();
+	free_nd();
 	return (0);
 }
 /**
- * n_free - Frees the memory associated with the linked list.
- *
+ * free_nd - Frees the memory associated with the linked list.
+ * 
  * This function iterates through the linked list and frees the memory
  * associated with each node. It ensures that the memory is properly
  * deallocated to prevent memory leaks.
  */
-void n_free(void)
+void free_nd(void)
 {
 	stack_t *temp;
 

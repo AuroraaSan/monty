@@ -47,20 +47,25 @@ typedef struct instruction_s
 extern stack_t *head;
 typedef void (*op_func)(stack_t **, unsigned int);
 /* prototypes for functions used in the project */
-void error_str(int code, ...);
+/* error files */
+void error_string(int code, ...);
 void err1(int code, ...);
 void err2(int code, ...);
+/* handle strings */
 void character_print(stack_t **stk, unsigned int num_line);
 void string_print(stack_t **stk, __attribute__((unused))unsigned int len);
 void rotate_l(stack_t **stk, __attribute__((unused))unsigned int len);
 void rotate_r(stack_t **stk, __attribute__((unused))unsigned int len);
+/* operations */
 void nd_mod(stack_t **stk, unsigned int num);
 void nd_mul(stack_t **stk, unsigned int num);
+/* handle files */
 void f_call(op_func fun, char *op_c, char *val, int num, int fr);
 void f_function(char *operation_c, char *val, int num, int fr);
 void open_file(char *f_name);
 void f_read(FILE *);
 int line_p(char *buf, int num, int fr);
+/* operations */
 void stack_add(stack_t **nd, __attribute__((unused))unsigned int num);
 void top_p(stack_t **stk, unsigned int num);
 void nd_plus(stack_t **stk, unsigned int num);
@@ -74,7 +79,7 @@ void nd_by(stack_t **stk, unsigned int num);
 void pop_p(stack_t **stk, unsigned int num);
 void q_add(stack_t **nd_new, __attribute__((unused))unsigned int len);
 stack_t *nd_new(int num);
-void n_free(void);
+void free_nd(void);
 
 #endif
 

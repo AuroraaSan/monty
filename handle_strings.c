@@ -1,18 +1,41 @@
 #include "monty.h"
 
+/**
+ * character_print - Prints the Ascii value.
+ * @stk: Pointer to a pointer pointing to top node of the stack.
+ * @num: Interger representing the line number of of the opcode.
+ */
+void character_print(stack_t **stk, unsigned int num)
+{
+	int asc;
+
+	/* check if no stack */
+	if (stk == NULL || *stk == NULL)
+		/* print error message if true */
+		error_string(11, num);
+	/* assign the value on top of stack to asc */
+	asc = (*stk)->n;
+	/* check if not available char in ascii system */
+	if (asc < 0 || asc > 127)
+		/* print error message */
+		error_string(10, num);
+	/*else, print the character of the provided ascii*/
+	printf("%c\n", asc);
+}
 
 /**
- * string_print - print a string using its ascii code
- * @stk: stack with ascii code
- * @len: number of lines in function
+ * string_print - Prints a string.
+ * @stk: Pointer to a pointer pointing to top node of the stack.
+ * @len: Interger representing the line number of of the opcode.
  * Return: void
-*/
+ */
 void string_print(stack_t **stk, __attribute__((unused))unsigned int len)
 {
 	/* ascii number */
 	int asc;
 	/* temporary stack */
 	stack_t *temp;
+
 	/* check if stack empty */
 	if (stk == NULL || *stk == NULL)
 	{
@@ -39,52 +62,25 @@ void string_print(stack_t **stk, __attribute__((unused))unsigned int len)
 	printf("\n");
 }
 
-
-
 /**
- * character_print - print the char of the provided ascii value
- * @stk: ptr to the node at the top of stack
- * @num_line: number of lines
- * Return: void
-*/
-
-void character_print(stack_t **stk, unsigned int num_line)
-{
-	int asc;
-
-	/* check if no stack */
-	if (stk == NULL || *stk == NULL)
-		/* print error message if true */
-		error_str(11, num_line);
-	/* assign the value on top of stack to asc */
-	asc = (*stk)->n;
-	/* check if not available char in ascii system */
-	if (asc < 0 || asc > 127)
-		/* print error message */
-		error_str(10, num_line);
-	/*else, print the character of the provided ascii*/
-	printf("%c\n", asc);
-}
-/**
- * rotate_l - change pointer from the first node to the last node
- * @stk: stack
- * @len: number of lines in the stack
-*/
+ * rotate_l - Rotates the first node of the stack to the bottom.
+ * @stk: Pointer to a pointer pointing to top node of the stack.
+ * @len: Interger representing the line number of of the opcode.
+ */
 void rotate_l(stack_t **stk, __attribute__((unused))unsigned int len)
 {
 	stack_t *temp;
 
 	/* check if the stack is empty or conatins only one element */
 	if (stk == NULL || *stk == NULL || (*stk)->next == NULL)
-	{
 		return;
-	}
 	/* assign stack to temporary stack*/
 	temp = *stk;
 	/* loop through the stack to get last element */
 	while (temp->next != NULL)
-		/* assign the value of last element to temp */
+	/* assign the value of last element to temp */
 		temp = temp->next;
+
 	temp->next = *stk;
 	(*stk)->prev = temp;
 	*stk = (*stk)->next;
@@ -92,19 +88,19 @@ void rotate_l(stack_t **stk, __attribute__((unused))unsigned int len)
 	(*stk)->prev = NULL;
 }
 
+
 /**
- * rotate_r - change the last node of the stack to be at top
- * @stk: stack
- * @len: number of lines
- * Return: void
-*/
+ * rotate_r - Rotates the last node of the stack to the top.
+ * @stk: Pointer to a pointer pointing to top node of the stack.
+ * @len: Interger representing the line number of of the opcode.
+ */
 void rotate_r(stack_t **stk, __attribute__((unused))unsigned int len)
 {
 	stack_t *temp;
-
 	/* check if empty or contains only one value */
 	if (stk == NULL || *stk == NULL || (*stk)->next == NULL)
 		return;
+
 	temp = *stk;
 	/* loop to get last element in stack */
 	while (temp->next != NULL)
